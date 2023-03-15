@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+  <title>Create Seating</title>
+</head>
+<body>
+<header>
+  <div th:insert="nav :: navbar"></div>
+</header>
+<div class="container">
+  <main role="main" class="pb-3">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Please Create an Event</h2>
+        <form th:action="@{/createEvent}" method="post" th:object="${event}">
+
+          <br>
+          <div class="form-group">
+              <label th:field="*{eventname}" class="control-label">Name: </label>
+              <input type="text" th:name="eventname" />
+              <br>
+              <label th:field="*{description}" class="control-label">Description: </label>
+              <textarea th:field="*{description}"
+                        name="news_content" rows="3" cols="50" >
+                        ...
+                        </textarea>
+              <br>
+              <label th:field="*{price}" class="control-label">Price: </label>
+              <input type="text" th:name="price" />
+              <br>
+            <label th:field="*{startdate}" class="control-label">Start Date: </label>
+            <input type="datetime-local" th:name="startdate" th:value="*{#temporals.format(startdate, 'yyyy-MM-dd HH:mm')}"  />
+            <br>
+            <label th:field="*{enddate}" class="control-label">End Date: </label>
+            <input type="datetime-local" th:name="enddate" th:value="*{#temporals.format(enddate, 'yyyy-MM-dd HH:mm')}"  />
+            <!--                        <input th:field="*{description}" class="form-control"/><br/>-->
+          </div>
+          <div class="form-group">
+              <a th:href="@{/events}" class="btn btn-dark">Go Back</a> &nbsp;
+            <input type="submit" value="Create" class="btn btn-primary"/>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>

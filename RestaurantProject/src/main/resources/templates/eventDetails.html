@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+  <title>Seating Details</title>
+</head>
+<body>
+<header>
+  <div th:insert="nav :: navbar"></div>
+</header>
+<div class="container">
+  <main role="main" class="pb-3">
+    <h1>Details</h1>
+    <div>
+      <h4>Event</h4>
+      <hr/>
+      <dl class="row" th:object="${event}">
+        <dt class="col-sm-2">
+          Event Name:
+        </dt>
+        <dd class="col-sm-10">
+          <span th:text="*{eventname}" th:unless="*{eventname == null}" >Event Not Found</span>
+          <!--          <span th:text="*{event.description}" th:unless="*{event == null}" >Event Not Found</span>-->
+        </dd>
+        <dt class="col-sm-2">
+          Description
+        </dt>
+        <dd class="col-sm-10">
+          <span th:text="*{description}" />
+        </dd>
+
+        <dt class="col-sm-2">
+          Price
+        </dt>
+        <dd class="col-sm-10">
+          <span th:text="*{#numbers.formatCurrency(price)}" />
+        </dd>
+
+        <dt class="col-sm-2">
+          Event Start Date:
+        </dt>
+        <dd class="col-sm-10">
+          <span th:text="*{#temporals.format(startdate, 'dd-MM-yyyy h:mm a')}" />
+        </dd>
+
+        <dt class="col-sm-2">
+          Event End Date:
+        </dt>
+        <dd class="col-sm-10">
+          <span th:text="*{#temporals.format(enddate, 'dd-MM-yyyy h:mm a')}" />
+        </dd>
+
+<!--        <a th:href="@{'/delete/' + ${event.id}} " class="btn btn-primary">Delete</a>-->
+
+<!--        <a th:href="@{/delete/{id}(id=${event.id})} " class="btn btn-primary">Delete</a> |-->
+      </dl>
+
+      <div>
+
+        <a th:href="@{/events}" class="btn btn-dark">Go Back</a>
+        &nbsp;
+        <a th:href="@{'/editEvent/' + ${event.id}} " class="btn btn-info">Edit</a>
+        &nbsp;
+        <a th:href="@{'/deleteEvent/' + ${event.id}} " class="btn btn-danger">Delete</a>
+
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
