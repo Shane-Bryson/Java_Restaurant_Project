@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Table Layouts</title>
+</head>
+<body>
+<h1>Tables</h1>
+<ul>
+  <li th:each="layout : ${layouts}">
+    <h2 th:text="${layout.getName()}"></h2>
+    <p th:text="${layout.getDescription()}"></p>
+    <table>
+      <thead>
+      <tr>
+        <th>Table ID</th>
+        <th>Seats</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="table : ${layout.getTables()}">
+        <td th:text="${table.getId()}"></td>
+        <td th:text="${table.getSeats()}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+</body>
+</html>

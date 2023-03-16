@@ -151,3 +151,51 @@ public class EventController {
     }
 
 }
+
+
+//------------------ Layout ---------------------
+
+    private LayoutService layoutService;
+
+    @GetMapping(value = {"/layout"})
+    public String getAllLayouts(Model model) {
+        var values = layoutService.getAllLayouts();
+        model.addAttribute("layouts", values);
+
+        return "layouts";
+    }
+
+    @GetMapping(value = "/layouts/{id}")
+    public String getLayouts(Model model, @PathVariable long id) {
+        Layout value = layoutService.get(id);
+        model.addAttribute("layouts", value);
+
+        return "layoutDetails";
+    }
+
+
+//------------------ Tables ---------------------
+
+    private TableService TableService;
+
+    @ModelAttribute("tables")
+    public List<Tables> getAllTables() {
+        var entities = tableService.getAllTables();
+        return entities;
+    }
+
+    @GetMapping(value = {"/tables"})
+    public String getAllTables(Model model) {
+        var values = tableService.getAllTables();
+        model.addAttribute("tables", values);
+
+        return "tables";
+    }
+
+    @GetMapping(value = "/tables/{id}")
+    public String getTable(Model model, @PathVariable long id) {
+        Table value = tableService.get(id);
+        model.addAttribute("table", value);
+
+        return "tableDetails";
+    }
