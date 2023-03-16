@@ -42,6 +42,11 @@
         <td>
           <span th:text="*{#temporals.format(event.enddate, 'dd-MM-yyyy h:mm a')}"></span>
         </td>
+        <td>
+          <a th:href="@{'/editEvent/' + ${event.id}} " class="btn btn-info">Edit</a>
+          &nbsp;&nbsp;
+          <a th:href="@{'/deleteEvent/' + ${event.id}} " class="btn btn-danger">Delete</a>
+        </td>
       </tr>
       </c:forEach>
       </tbody>

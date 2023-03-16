@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Event {
@@ -25,6 +26,10 @@ public class Event {
 //    @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime enddate;
+
+//    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+//    @JoinColumn(name = "SeatingId", foreignKey = @ForeignKey(name="FK_Seating_Event"))
+//    private List<Seating> seating;
 
     public Event() {
     }

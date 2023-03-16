@@ -6,6 +6,8 @@ import ca.nbcc.restaurantproject.service.EventService;
 import ca.nbcc.restaurantproject.service.SeatingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 //import org.springframework.web.bind.annotation.GetMapping;
@@ -63,6 +65,30 @@ public class EventController {
 
         return "redirect:/";
     }
+
+    @GetMapping(value = "/editSeating/{id}")
+    public String editSeating(@PathVariable long id, Model model) {
+        Seating value = seatingService.get(id);
+        model.addAttribute("seating", value);
+
+        return "editSeating";
+    }
+
+//    @PostMapping(value = "/create/{id}")
+//    public String editSeating(long id) {
+//        Seating value = seatingService.get(id);
+//        seatingService.save(value);
+//
+//        return "redirect:/";
+//    }
+
+
+//    @RequestMapping(value="/create/{id}",method=RequestMethod.POST)
+//    public String editSeating(@ModelAttribute("seating") Seating seating) {
+//
+//        seatingService.save(seating);
+//        return "index";
+//    }
 // ------------------------ EVENTS ------------------------
 
     @ModelAttribute("events")

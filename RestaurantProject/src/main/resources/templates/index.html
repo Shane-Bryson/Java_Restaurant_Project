@@ -34,6 +34,11 @@
         <td>
           <span th:text="${#temporals.format(seating.enddate, 'dd-MM-yyyy h:mm a')}"></span>
         </td>
+        <td>
+          <a th:href="@{'/create/' + ${seating.id}} " class="btn btn-info">Edit</a>
+          &nbsp;
+          <a th:href="@{'/deleteSeating/' + ${seating.id}} " class="btn btn-danger">Delete</a>
+        </td>
       </tr>
       </c:forEach>
       </tbody>
