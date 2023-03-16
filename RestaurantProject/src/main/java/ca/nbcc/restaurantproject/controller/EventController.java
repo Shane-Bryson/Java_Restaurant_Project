@@ -74,21 +74,14 @@ public class EventController {
         return "editSeating";
     }
 
-//    @PostMapping(value = "/create/{id}")
-//    public String editSeating(long id) {
-//        Seating value = seatingService.get(id);
-//        seatingService.save(value);
-//
-//        return "redirect:/";
-//    }
+    @PostMapping(value = "/editSeating")
+    public String editSeating(Seating seating) {
+        seating.setId(seating.getId());
+        seatingService.update(seating);
 
+        return "redirect:/";
+    }
 
-//    @RequestMapping(value="/create/{id}",method=RequestMethod.POST)
-//    public String editSeating(@ModelAttribute("seating") Seating seating) {
-//
-//        seatingService.save(seating);
-//        return "index";
-//    }
 // ------------------------ EVENTS ------------------------
 
     @ModelAttribute("events")
@@ -127,25 +120,27 @@ public class EventController {
         return "redirect:/events";
     }
 
-    @GetMapping(value = "/editEvent/{id}")
-    public String editEvent(@PathVariable(name = "id") Model model) {
-        model.addAttribute("event", new Event());
-
-        return "redirect:/events";
-    }
-
-    @PostMapping(value = "/editEvent/{id}")
-    public String editEvent(long id) {
-        Event value = eventService.get(id);
-        eventService.save(value);
-
-        return "redirect:/events";
-    }
-
     @GetMapping(value = "/deleteEvent/{id}")
     public String deleteEvent(@PathVariable(name = "id") long id) {
         Event value = eventService.get(id);
         eventService.delete(value);
+
+        return "redirect:/events";
+    }
+
+
+    @GetMapping(value = "/editEvent/{id}")
+    public String editEvent(@PathVariable long id, Model model) {
+        Event value = eventService.get(id);
+        model.addAttribute("event", value);
+
+        return "editEvent";
+    }
+
+    @PostMapping(value = "/editEvent")
+    public String editEvent(Event event) {
+//        event.setId(event.getId());
+        eventService.update(event);
 
         return "redirect:/events";
     }

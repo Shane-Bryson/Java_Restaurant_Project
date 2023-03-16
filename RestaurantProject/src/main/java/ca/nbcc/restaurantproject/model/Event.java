@@ -23,7 +23,7 @@ public class Event {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime startdate;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime enddate;
 
