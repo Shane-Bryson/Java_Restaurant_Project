@@ -27,6 +27,10 @@ public class EventService {
         eventRepo.save(event);
     }
 
+    public void update(Event event) {
+        eventRepo.save(event);
+    }
+
     public void delete(Event event) {
         eventRepo.delete(event);
     }

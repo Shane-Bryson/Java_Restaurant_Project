@@ -26,6 +26,10 @@ public class SeatingService {
         seatingRepo.save(seating);
     }
 
+    public void update(Seating seating) {
+        seatingRepo.save(seating);
+    }
+
     public void delete(Seating seating) {
         seatingRepo.delete(seating);
     }
